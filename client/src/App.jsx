@@ -1,10 +1,16 @@
 import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Allpass from './pages/Allpass';
+import Home from './pages/Home';
 
 const App = () => {
   return (
-    <div style={{textAlign:"center"}}>
-     DSP-TASK-5 <br /> W rbna yostor
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/allpass" element={<Allpass/>} />
+      </Routes>
+    </Router>
   )
 }
 
