@@ -3,18 +3,27 @@
     height: 300px;
     background-color: #333;
     border-radius: 10px;
-    position: relative;
     margin-top: 1rem;
+    position: relative;
+    /* cursor: pointer; */
 }
 
 .circle {
     width: 250px;
     height: 250px;
     border: 1px solid rgb(181, 195, 235);
-    border-radius: 50%; 
+    border-radius: 50%;
     margin-left: calc(50px/2);
     margin-top: calc(50px/2);
-    cursor: cell;
+}
+
+.zero {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #dc3545;
+    position: absolute;
+    cursor: all-scroll;
 }
 
 .separator1 {
@@ -32,4 +41,10 @@
     background-color: whitesmoke;
     position: absolute;
     top: calc(300px/2);
+}
+
+.pole {
+    color: #0d6efd;
+    position: absolute;
+    cursor: all-scroll;
 }
