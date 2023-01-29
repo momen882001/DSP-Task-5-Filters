@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <Container fluid>
             <Row>
-                <Col lg={4} md={6} sm={6} xs={12}>
+                <Col style={{display:"flex",flexDirection:"column",alignItems:"center"}} lg={4} md={6} sm={6} xs={12}>
                     <PolesZeros/>
                 </Col>
                 <Col lg={4} md={6} sm={6} xs={12}>
