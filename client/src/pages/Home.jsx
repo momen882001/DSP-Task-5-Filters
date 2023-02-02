@@ -4,6 +4,7 @@ import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import Plotting from '../components/Plotting/Plotting';
 import Signals from '../components/Signals/Signals';
+import Test from '../components/Signals/Test';
 import PolesZeros from '../components/Zeros&poles/PolesZeros';
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
                 </Col>
                 <Col lg={4} md={6} sm={6} xs={12}>
                     <Signals/>
+                    {/* <Test/> */}
                 </Col>
             </Row>
         </Container>

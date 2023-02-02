@@ -5,7 +5,9 @@
     border-radius: 10px;
     margin-top: 1rem;
     position: relative;
-    /* cursor: pointer; */
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .circle {
@@ -24,6 +26,14 @@
     background-color: #dc3545;
     position: absolute;
     cursor: all-scroll;
+    z-index: 3;
+}
+
+.pole {
+    color: #0d6efd;
+    position: absolute;
+    cursor: all-scroll;
+    z-index: 3;
 }
 
 .separator1 {
@@ -41,10 +51,4 @@
     background-color: whitesmoke;
     position: absolute;
     top: calc(300px/2);
-}
-
-.pole {
-    color: #0d6efd;
-    position: absolute;
-    cursor: all-scroll;
 }
