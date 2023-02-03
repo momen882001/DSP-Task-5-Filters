@@ -7,7 +7,6 @@
     position: relative;
     cursor: pointer;
     overflow: hidden;
-    z-index: 1;
 }
 
 .circle {
@@ -26,17 +25,15 @@
     background-color: #dc3545;
     position: absolute;
     cursor: all-scroll;
-    z-index: 3;
 }
 
 .pole {
     color: #0d6efd;
     position: absolute;
     cursor: all-scroll;
-    z-index: 3;
 }
 
-.separator1 {
+.y-axis {
     width: 300px;
     height: 1px;
     background-color: whitesmoke;
@@ -45,7 +42,7 @@
     top: calc(300px/2);
 }
 
-.separator2 {
+.x-axis {
     width: 300px;
     height: 1px;
     background-color: whitesmoke;

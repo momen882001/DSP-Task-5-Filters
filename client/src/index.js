@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FileContextProvider } from './components/contexts/fileContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <FileContextProvider>
     <App />
+    </FileContextProvider>
   </React.StrictMode>
 );
 
