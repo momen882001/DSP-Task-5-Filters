@@ -10,33 +10,46 @@ app = Flask(__name__)
 
 CORS(app)
 
+global  zeros 
+global  poles
 
 # --------------------------------------------------------APIs----------------------------------------------------------#
 
 # ----------------------------------------------------------------------------------------------------------------------#
 # API description:
-#       Fuction: Upload the file to the server
-#       Return: File URL
+#       Fuction: generete z filter
+#       Return: frequency response of the filter , magnitude response of the filter , phase response of the filter
 
 @app.route("/api/get_zeros_poles", methods=['POST'])
 def generate_filter():
 
-    # check if the post request has the file part
+    # get request data
+    data = request.get_json()
+    zeros_pairs = data["zeros"]
+    poles_pairs = data["poles"]
+    print("z"*100)
+    print(zeros_pairs)
+    zeros = parseToComplex(zeros_pairs)
+    print(zeros)
+    print(type(zeros))
+    poles = parseToComplex(poles_pairs)
+    print("p"*100)
+    print(poles_pairs)
+    print(poles)
+    w,magnitude,angles = generate_z_filter(zeros,poles)
+    return {"freq" :list(w), "magnitude" :list(magnitude), "angles": list(angles)},200
+
+# ----------------------------------------------------------------------------------------------------------------------#
+# API description:
+#       Fuction: filter signal
+#       Return: filtered signal
+@app.route("/api/filtering_signal", methods=['POST'])
+def filtering_signal():
 
     # get request data
     data = request.get_json()
-    zeros = data["zeros"]
-    poles = data["poles"]
-    print("z"*100)
-    print(zeros)
-    z = parseToComplex(zeros)
-    print(z)
-    print(type(z))
-    p = parseToComplex(poles)
-    print("p"*100)
-    print(poles)
-    print(p)
+    signal = data["signal"]
 
-    w,magnitude,angles = generate_z_filter(z,p)
+    filtered_signal = filter_signal(zeros,poles,signal)
 
-    return {"freq" :list(w), "magnitude" :list(magnitude), "angles": list(angles)},200
+    return {"filtered_signal" :list(filtered_signal)},200
