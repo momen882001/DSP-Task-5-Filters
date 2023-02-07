@@ -1,8 +1,9 @@
 import React from 'react'
 import './PolesZeros.css'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-import { useContext } from 'react'
+import { useContext , useEffect} from 'react'
 import { FileContext } from '../contexts/fileContext'
+import axios from '../Global/axios'
 
 const PolesZeros = () => {
 
@@ -20,17 +21,35 @@ const PolesZeros = () => {
     useEffect(() => {
       let zeros = []
       let poles = []
-      if (mode === false) {
-        
-      }
+      pointsList.map((point) => {
+        point.mode === false ? 
+        zeros.push({
+            x : point.x,
+            y : point.y
+        }) : 
+        poles.push({
+            x : point.x,
+            y : point.y
+        })
+      })
+    //   axios.post('/get_zeros_poles',{
+    //     pointsList
+    //   }).then((response) => {
+    //     console.log(response)
+    //   }).catch((err) => {
+    //     console.log(err)
+    //   })
+      console.log(zeros)
+      console.log(poles)
     }, [pointsList])
+    
     
 
     const mouseMove = (event) => {
         setPositionX( ( event.clientX - 228) / 125 );
         setPositionY( ( 203 - event.clientY ) / 125 );
-        console.log(positionX);
-        console.log(positionY);
+        // console.log(positionX);
+        // console.log(positionY);
     }
 
     const mouseLeave = () => {
@@ -38,14 +57,11 @@ const PolesZeros = () => {
     }
 
     const draw = () => {
-        pointsList.push(
-            {
-                y: positionY,
-                x: positionX,
-                mode: mode,
-            }
-        )
-        console.log(pointsList);
+        setPointList([...pointsList,  {
+            y: positionY,
+            x: positionX,
+            mode: mode,
+        }])
     }
 
     const rightClick = (index, e) => {
@@ -55,7 +71,7 @@ const PolesZeros = () => {
         newPointsList.splice(index, 1);
         setPointList(newPointsList);
     }
-    console.log(pointsList)
+    // console.log(pointsList)
 
     return (
         <>
