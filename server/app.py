@@ -48,7 +48,7 @@ def filtering_signal():
 
     # get request data
     data = request.get_json()
-    signal = data["signal"]
+    signal = data["signalPositionY"]
 
     filtered_signal = filter_signal(zeros,poles,signal)
 

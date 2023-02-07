@@ -17,6 +17,7 @@ const FileContextProvider = ({ children }) => {
 
     const [countXaxis, setCountXaxis] = useState(0)
     const [signalPositionY, setSignalpositionY] = useState([])
+    const [signalYupdated, setSignalYupdated] = useState([])
     const [Xaxis, setXaxis] = useState([])
 
     return (
@@ -41,7 +42,9 @@ const FileContextProvider = ({ children }) => {
                 phase,
                 setPhase,
                 magnitude,
-                setMagnitude
+                setMagnitude,
+                signalYupdated,
+                setSignalYupdated
             }}>
             {children}
         </FileContext.Provider>
