@@ -17,6 +17,15 @@ const PolesZeros = () => {
         setPointList
     } = useContext(FileContext);
 
+    useEffect(() => {
+      let zeros = []
+      let poles = []
+      if (mode === false) {
+        
+      }
+    }, [pointsList])
+    
+
     const mouseMove = (event) => {
         setPositionX( ( event.clientX - 228) / 125 );
         setPositionY( ( 203 - event.clientY ) / 125 );

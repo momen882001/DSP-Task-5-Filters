@@ -19,7 +19,7 @@ const Signals = () => {
   const mouseMove = (event) => {
     setSignalpositionY([...signalPositionY,event.clientY])
     setXaxis([...Xaxis,countXaxis])
-    setCountXaxis(countXaxis+0.1)
+    setCountXaxis(countXaxis+1)
     if (signalPositionY.length > 50) {
       setSignalpositionY(signalPositionY.slice(1,signalPositionY.length))
       setXaxis(Xaxis.slice(1,Xaxis.length))
