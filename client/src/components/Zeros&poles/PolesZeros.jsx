@@ -1,7 +1,7 @@
 import React from 'react'
 import './PolesZeros.css'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-import { useContext , useEffect} from 'react'
+import { useContext, useEffect } from 'react'
 import { FileContext } from '../contexts/fileContext'
 import axios from '../Global/axios'
 
@@ -15,39 +15,48 @@ const PolesZeros = () => {
         positionY,
         setPositionY,
         pointsList,
-        setPointList
+        setPointList,
+        frequency,
+        setFrequency,
+        phase,
+        setPhase,
+        magnitude,
+        setMagnitude
     } = useContext(FileContext);
 
     useEffect(() => {
-      let zeros = []
-      let poles = []
-      pointsList.map((point) => {
-        point.mode === false ? 
-        zeros.push({
-            x : point.x,
-            y : point.y
-        }) : 
-        poles.push({
-            x : point.x,
-            y : point.y
+        let zeros = []
+        let poles = []
+        pointsList.map((point) => {
+            point.mode === false ?
+                zeros.push({
+                    x: point.x,
+                    y: point.y
+                }) :
+                poles.push({
+                    x: point.x,
+                    y: point.y
+                })
         })
-      })
-      axios.post('/get_zeros_poles',{
-        zeros , poles
-      }).then((response) => {
-        console.log(response)
-      }).catch((err) => {
-        console.log(err)
-      })
-      console.log(zeros)
-      console.log(poles)
+        axios.post('/get_zeros_poles', {
+            zeros, poles
+        }).then((response) => {
+            console.log(response)
+            setFrequency(response.data.freq)
+            setMagnitude(response.data.magnitude)
+            setPhase(response.data.angles)
+        }).catch((err) => {
+            console.log(err)
+        })
+        console.log(zeros)
+        console.log(poles)
     }, [pointsList])
-    
-    
+
+
 
     const mouseMove = (event) => {
-        setPositionX( ( event.clientX - 228) / 125 );
-        setPositionY( ( 203 - event.clientY ) / 125 );
+        setPositionX((event.clientX - 228) / 125);
+        setPositionY((203 - event.clientY) / 125);
         // console.log(positionX);
         // console.log(positionY);
     }
@@ -57,7 +66,7 @@ const PolesZeros = () => {
     }
 
     const draw = () => {
-        setPointList([...pointsList,  {
+        setPointList([...pointsList, {
             y: positionY,
             x: positionX,
             mode: mode,
@@ -93,9 +102,9 @@ const PolesZeros = () => {
                 <div className='circle'></div>
                 {pointsList.map((point, index) => {
                     return (
-                        point.mode === false ? <div onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146 ), left: ((point.x * 125) + 147) }} ></div>
+                        point.mode === false ? <div onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146), left: ((point.x * 125) + 147) }} ></div>
                             :
-                            <div onContextMenu={(e) => rightClick(index, e)} key={index} className='pole' style={{ top: ((point.y * (125 * -1)) + 139 ), left: ((point.x * 125) + 147 ) }} >X</div>
+                            <div onContextMenu={(e) => rightClick(index, e)} key={index} className='pole' style={{ top: ((point.y * (125 * -1)) + 139), left: ((point.x * 125) + 147) }} >X</div>
                     )
                 })}
             </div>

@@ -9,6 +9,9 @@ const FileContextProvider = ({ children }) => {
     const [positionX, setPositionX] = useState()
     const [positionY, setPositionY] = useState()
     const [pointsList,setPointList] = useState([])
+    const [frequency,setFrequency] = useState([])
+    const [phase,setPhase] = useState([])
+    const [magnitude,setMagnitude] = useState([])
 
     // signals component
 
@@ -32,7 +35,13 @@ const FileContextProvider = ({ children }) => {
                 Xaxis,
                 setXaxis,
                 countXaxis,
-                setCountXaxis
+                setCountXaxis,
+                frequency,
+                setFrequency,
+                phase,
+                setPhase,
+                magnitude,
+                setMagnitude
             }}>
             {children}
         </FileContext.Provider>
