@@ -32,13 +32,13 @@ const PolesZeros = () => {
             y : point.y
         })
       })
-    //   axios.post('/get_zeros_poles',{
-    //     pointsList
-    //   }).then((response) => {
-    //     console.log(response)
-    //   }).catch((err) => {
-    //     console.log(err)
-    //   })
+      axios.post('/get_zeros_poles',{
+        zeros , poles
+      }).then((response) => {
+        console.log(response)
+      }).catch((err) => {
+        console.log(err)
+      })
       console.log(zeros)
       console.log(poles)
     }, [pointsList])

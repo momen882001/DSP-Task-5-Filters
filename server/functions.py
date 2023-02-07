@@ -26,7 +26,7 @@ def filter_signal(zeros,poles,sig):
 def generate_all_pass_filter(a):
     p=a
     z =[1/np.conj(x) for x in a]
-    w, h = signal.freqz_zpk(z, p, k )
+    w, h = signal.freqz_zpk(z, p, 1 )
     angles = np.unwrap(np.angle(h))
     return w  , angles
 
@@ -56,7 +56,7 @@ def addAllPassZerosPoles(z , p , a ):
 def parseToComplex(pairs):
     complexNumbers = [0]*len(pairs)
     for i in range(len(pairs)):
-        x = round(pairs[i][0], 2)
-        y = round(pairs[i][1], 2)
+        x = round(pairs[i]["x"], 2)
+        y = round(pairs[i]["y"], 2)
         complexNumbers[i] = x+ y*1j
     return complexNumbers
