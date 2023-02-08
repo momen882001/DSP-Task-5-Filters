@@ -7,7 +7,7 @@ def generate_z_filter(zeros,poles):
     # zero pole filter
     # w is frequencies normalized to the range [0, pi) 
     # h is frequency response
-    w, h = signal.freqz_zpk(zeros, poles,1, fs=1000 )
+    w, h = signal.freqz_zpk(zeros, poles,1)
     # calculating magnitude and phase response
     magnitude = 20 * np.log10(abs(h))
     angles = np.unwrap(np.angle(h))
