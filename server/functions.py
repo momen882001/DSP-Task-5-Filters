@@ -20,8 +20,8 @@ def filter_signal(zeros,poles,sig):
     # apply filter by difference equation on signal
     zi = signal.lfilter_zi(b, a)
     z, _ = signal.lfilter(b, a, sig, zi=zi*sig[0])
-    y = signal.lfilter(b, a, sig)
-    return y
+    # y = signal.lfilter(b, a, sig)
+    return z
 
 def generate_all_pass_filter(a):
     p=a

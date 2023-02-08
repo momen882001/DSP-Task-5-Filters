@@ -10,9 +10,8 @@ app = Flask(__name__)
 
 CORS(app)
 
-global  zeros 
-global  poles
-
+# zeros = [0]
+# poles = [0]
 # --------------------------------------------------------APIs----------------------------------------------------------#
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -22,6 +21,10 @@ global  poles
 
 @app.route("/api/get_zeros_poles", methods=['POST'])
 def generate_filter():
+    global  zeros 
+    global  poles
+
+
 
     # get request data
     data = request.get_json()
@@ -46,10 +49,15 @@ def generate_filter():
 @app.route("/api/filtering_signal", methods=['POST'])
 def filtering_signal():
 
+
     # get request data
     data = request.get_json()
+    print(zeros)
+    print(poles)
     signal = data["signalPositionY"]
+    print(signal)
 
     filtered_signal = filter_signal(zeros,poles,signal)
+    print(filtered_signal)
 
-    return {"filtered_signal" :list(filtered_signal)},200
+    return {"filtered_signal" :list(abs(filtered_signal))},200
