@@ -4,8 +4,6 @@ import './ImportExport.css'
 import { FileContext } from '../contexts/fileContext'
 
 
-
-
 // set the CSV headers
 const headers = [
   { label: "y", key: "y" },
@@ -21,7 +19,7 @@ class ImportExport extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     }
     this.csvLinkEl = React.createRef();
   }
@@ -41,38 +39,34 @@ class ImportExport extends Component {
     });
   }
    
+  processCSV = (str, delim=',') => {
+    const headers = str.slice(0,str.indexOf('\n')).split(delim);
+    const rows = str.slice(str.indexOf('\n')+1).split('\n');
 
+    const newArray = rows.map( row => {
+        const values = row.split(delim);
+        const eachObject = headers.reduce((obj, header, i) => {
+            obj[header] = values[i];
+            return obj;
+        }, {})
+        return eachObject;
+    })
 
-  submit = () => {
+    this.context.setCsvArray(newArray)
+    console.log(this.context.csvArray)
+   }
+
+  readFilter = () => {
   const file = this.context.csvFile;
   const reader = new FileReader();
 
   reader.onload = function(e) {
       const text = e.target.result;
       console.log(text);
-      // this.processCSV(text)
+      self.processCSV(text)
   }
   reader.readAsText(file);
   }
-
-
-  // processCSV = (str, delim=',') => {
-  //   const headers = str.slice(0,str.indexOf('\n')).split(delim);
-  //   const rows = str.slice(str.indexOf('\n')+1).split('\n');
-
-  //   const newArray = rows.map( row => {
-  //       const values = row.split(delim);
-  //       const eachObject = headers.reduce((obj, header, i) => {
-  //           obj[header] = values[i];
-  //           return obj;
-  //       }, {})
-  //       return eachObject;
-  //   })
-
-  //   this.context.setCsvArray(newArray)
-  //   console.log(newArray);
-  //   }
-
 
   render() {
     const { data } = this.state;
@@ -99,7 +93,7 @@ class ImportExport extends Component {
             onChange={(e) => {
                 this.context.setCsvFile(e.target.files[0])
                 e.preventDefault()
-                if(this.context.csvFile)this.submit()
+                if(this.context.csvFile)this.readFilter()
             }}
         >
         </input>
