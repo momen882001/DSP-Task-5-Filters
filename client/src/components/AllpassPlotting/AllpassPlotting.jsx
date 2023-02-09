@@ -7,6 +7,7 @@ const AllpassPlotting = () => {
     const {
         frequency,
         phase,
+        aValue,
       } = useContext(FileContext);
 
       var angle = {
@@ -37,7 +38,10 @@ const AllpassPlotting = () => {
 
   return (
     <>
+    <p>Original phase</p>
     <Plot data={[angle]} layout={layout} config={config} />
+    <p>Allpass for A = {aValue}</p>
+    {/* <Plot data={[angle]} layout={layout} config={config} /> */}
     </>
   )
 }
