@@ -2,9 +2,9 @@ import React, { Component} from 'react';
 import { CSVLink } from "react-csv";
 import './ImportExport.css'
 import { FileContext } from '../contexts/fileContext'
-import CSVReader from "react-csv-reader";
+// import CSVReader from "react-csv-reader";
 
-const handleForce = (data, fileInfo) => console.log(data, fileInfo);
+// const handleForce = (data, fileInfo) => console.log(data, fileInfo);
 
 
 
@@ -43,15 +43,42 @@ class ImportExport extends Component {
     });
   }
    
-  papaparseOptions = {
-    header: true,
-    dynamicTyping: true,
-    skipEmptyLines: true,
-    transformHeader: header => header.toLowerCase().replace(/\W/g, "_"),
-    complete: function(results, file) {
-      this.setPointList(results.data)
+    processCSV = (str, delim=',') => {
+    const headers = str.slice(0,str.indexOf('\n')).split(delim);
+    const rows = str.slice(str.indexOf('\n')+1).split('\n');
+
+    const newArray = rows.map( row => {
+        const values = row.split(delim);
+        const eachObject = headers.reduce((obj, header, i) => {
+            obj[header] = values[i];
+            return obj;
+        }, {})
+        return eachObject;
+    })
+
+    this.context.setCsvArray(newArray)
     }
-  };
+
+    submit = () => {
+    const file = this.context.csvFile;
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        const text = e.target.result;
+        console.log(text);
+    }
+
+    reader.readAsText(file);
+    }
+  // papaparseOptions = {
+  //   header: true,
+  //   dynamicTyping: true,
+  //   skipEmptyLines: true,
+  //   transformHeader: header => header.toLowerCase().replace(/\W/g, "_"),
+  //   complete: function(results, file) {
+  //     this.setPointList(results.data)
+  //   }
+  // };
 
   render() {
     const { data } = this.state;
@@ -71,14 +98,51 @@ class ImportExport extends Component {
           ref={this.csvLinkEl}
         />
 
-        <div className="container">
-        <CSVReader
-          cssClass="react-csv-input"
-          label="Select Filter"
-          onFileLoaded={handleForce}
-          parserOptions={this.papaparseOptions}
-        />
-      </div>
+
+        <form id='csv-form'>
+        <input
+            type='file'
+            accept='.csv'
+            id='csvFile'
+            onChange={(e) => {
+                this.context.setCsvFile(e.target.files[0])
+            }}
+        >
+        </input>
+        <br/>
+        <button
+            onClick={(e) => {
+                e.preventDefault()
+                if(this.context.csvFile)this.submit()
+            }}
+        >
+            Submit
+        </button>
+        <br/>
+        <br/>
+        {(this.context.csvArray).length>0 ? 
+        <>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Rank</th>
+                </thead>
+                <tbody>
+                    {
+                        this.context.csvArray.map((item, i) => (
+                            <tr key={i}>
+                                <td>{item.name}</td>
+                                <td>{item.age}</td>
+                                <td>{item.rank}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </> : null}
+      </form>
+
       </div>      
     );
   }

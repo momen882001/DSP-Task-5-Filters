@@ -20,17 +20,10 @@ const FileContextProvider = ({ children }) => {
     const [signalYupdated, setSignalYupdated] = useState([])
     const [Xaxis, setXaxis] = useState([])
 
-    // import/export
+    //import/export
 
-    // This state will store the parsed data
-    const [data, setData] = useState([]);
-     
-    // It state will contain the error when
-    // correct file extension is not used
-    const [error, setError] = useState("");
-     
-    // It will store the file uploaded by the user
-    const [file, setFile] = useState("");
+    const [csvFile, setCsvFile] = useState();
+    const [csvArray, setCsvArray] = useState([]);
 
 
     return (
@@ -58,12 +51,10 @@ const FileContextProvider = ({ children }) => {
                 setMagnitude,
                 signalYupdated,
                 setSignalYupdated,
-                data,
-                setData,
-                error,
-                setError,
-                file,
-                setFile
+                csvFile, 
+                setCsvFile,
+                csvArray, 
+                setCsvArray
             }}>
             {children}
         </FileContext.Provider>
