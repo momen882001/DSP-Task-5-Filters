@@ -24,6 +24,8 @@ const Signals = () => {
       color: "#333",
       width: 2,
     },
+    yaxis:"y1"
+    
   };
 
   var angle = {
@@ -34,6 +36,8 @@ const Signals = () => {
       color: "#333",
       width: 2,
     },
+    yaxis:"y2"
+
   };
 
   var config = {
@@ -49,7 +53,28 @@ const Signals = () => {
       r: 0,
       // b: 0,
       t: 0
-    }
+    },
+    xaxis: {
+      automargin: true,
+      tickangle: 90,
+      title: {
+        text: "Frequency",
+        standoff: 20
+      }},
+      yaxis1: {
+        automargin: true,
+        tickangle: 90,
+        title: {
+          text: "Magnitude",
+          standoff: 20
+        }},
+        yaxis2: {
+          automargin: true,
+          tickangle: 90,
+          title: {
+            text: "Phase",
+            standoff: 20
+          }},
   };
 
   return (

@@ -25,6 +25,12 @@ const FileContextProvider = ({ children }) => {
     const [csvFile, setCsvFile] = useState();
     const [csvArray, setCsvArray] = useState([]);
 
+    // Form
+
+    const [aValue, setAvalue] = useState('');
+    const [aValueList, setAvalueList] = useState([]);
+
+
 
     return (
         <FileContext.Provider
@@ -54,7 +60,11 @@ const FileContextProvider = ({ children }) => {
                 csvFile, 
                 setCsvFile,
                 csvArray, 
-                setCsvArray
+                setCsvArray,
+                aValue,
+                setAvalue,
+                aValueList,
+                setAvalueList
             }}>
             {children}
         </FileContext.Provider>
