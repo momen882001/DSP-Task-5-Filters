@@ -30,12 +30,15 @@ def generate_filter():
     poles_pairs = data["poles"]
     print("z"*100)
     print(zeros_pairs)
-    zeros = parseToComplex(zeros_pairs)
+    zeros = pairs_to_complex(zeros_pairs)
     print(zeros)
     print(type(zeros))
-    poles = parseToComplex(poles_pairs)
+    poles = pairs_to_complex(poles_pairs)
     print("p"*100)
     print(poles_pairs)
+    print(poles)
+    print("V"*60)
+    print(zeros)
     print(poles)
     w,magnitude,angles = generate_z_filter(zeros,poles)
     return {"freq" :list(w), "magnitude" :list(magnitude), "angles": list(angles)},200
@@ -48,12 +51,14 @@ def generate_filter():
 def filtering_signal():
     # get request data
     data = request.get_json()
+    print("F"*60)
     print(zeros)
     print(poles)
     signal = data["signalPositionY"]
-    print(signal)
+    # print(signal)
     filtered_signal = filter_signal(zeros,poles,signal)
-    print(filtered_signal)
+    # print(filtered_signal)
+    print("F"*60)
     return {"filtered_signal" :list(abs(filtered_signal))},200
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -85,15 +90,22 @@ def generate_all_pass():
 #       Fuction: generate all pass filter frequency response
 #       Return: all filter phase response
 
-@app.route("/api/all_pass_filter", methods=['POST'])
+@app.route("/api/all_pass_filter_response", methods=['POST'])
 def update_filter():
-    # get request data
-    data = request.get_json()
+    global  zeros 
+    global  poles
     print(zeros)
     print(poles)
-    a_values = data["a"]
+    print("#"*50)
+    # get request data
+    data = request.get_json()
+    a_values = data["aValueList"]
     print(a_values)
+    print(type(a_values))
+    print("A"*50)
 
-    w, magnitude, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+    zeros, poles, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+    print(zeros)
+    print(poles)
 
-    return {"freq" :list(w), "filter_phase_response" :list(angles)} , 200
+    return {"filter_phase_response" :list(angles)} , 200
