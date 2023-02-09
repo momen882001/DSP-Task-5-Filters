@@ -65,14 +65,19 @@ def filtering_signal():
 def generate_all_pass():
     # get request data
     data = request.get_json()
-    print(zeros)
-    print(poles)
+    # print(zeros)
+    # print(poles)
     a_value = data["aValue"]
     print(a_value)
+    a_value =  eval(a_value)
+    print(a_value)
+    print(type(a_value))
 
     w  , angles = generate_all_pass_filter(a_value)
+    print("Done")
+    a_val = f"{a_value}"
 
-    return {"A" :a_value, "all_pass_phase_response" :list(angles)} , 200
+    return {"A" :a_val, "all_pass_phase_response" :list(angles)} , 200
 
 
 # ----------------------------------------------------------------------------------------------------------------------#
