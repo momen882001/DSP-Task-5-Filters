@@ -23,13 +23,19 @@ def filter_signal(zeros,poles,sig):
     # y = signal.lfilter(b, a, sig)
     return z
 
+# def generate_all_pass_filter(a):
+#     p=a
+#     z =[1/np.conj(x) for x in a]
+#     w, h = signal.freqz_zpk(z, p, 1 )
+#     angles = np.unwrap(np.angle(h))
+#     return w  , angles
+
 def generate_all_pass_filter(a):
     p=a
-    z =[1/np.conj(x) for x in a]
+    z =1/np.conj(a)
     w, h = signal.freqz_zpk(z, p, 1 )
     angles = np.unwrap(np.angle(h))
     return w  , angles
-
 
 
 def getAllPassFrequencyResponse(z , p , a ):

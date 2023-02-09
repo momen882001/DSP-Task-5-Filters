@@ -24,8 +24,6 @@ def generate_filter():
     global  zeros 
     global  poles
 
-
-
     # get request data
     data = request.get_json()
     zeros_pairs = data["zeros"]
@@ -48,16 +46,49 @@ def generate_filter():
 #       Return: filtered signal
 @app.route("/api/filtering_signal", methods=['POST'])
 def filtering_signal():
-
-
     # get request data
     data = request.get_json()
     print(zeros)
     print(poles)
     signal = data["signalPositionY"]
     print(signal)
-
     filtered_signal = filter_signal(zeros,poles,signal)
     print(filtered_signal)
-
     return {"filtered_signal" :list(abs(filtered_signal))},200
+
+# ----------------------------------------------------------------------------------------------------------------------#
+# API description:
+#       Fuction: generate all pass filter
+#       Return: all pass filter phase response
+
+@app.route("/api/all_pass_filter", methods=['POST'])
+def generate_all_pass():
+    # get request data
+    data = request.get_json()
+    print(zeros)
+    print(poles)
+    a_value = data["a"]
+    print(a_value)
+
+    w  , angles = generate_all_pass_filter(a_value)
+
+    return {"freq" :list(w), "all_pass_phase_response" :list(angles)} , 200
+
+
+# ----------------------------------------------------------------------------------------------------------------------#
+# API description:
+#       Fuction: generate all pass filter frequency response
+#       Return: all filter phase response
+
+@app.route("/api/all_pass_filter", methods=['POST'])
+def update_filter():
+    # get request data
+    data = request.get_json()
+    print(zeros)
+    print(poles)
+    a_values = data["a"]
+    print(a_values)
+
+    w, magnitude, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+
+    return {"freq" :list(w), "filter_phase_response" :list(angles)} , 200
