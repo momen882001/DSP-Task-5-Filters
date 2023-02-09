@@ -16,13 +16,13 @@ const Form = () => {
 
     const Blur = () => {
         console.log("done")
-        // axios.post('',{
-        //     aValue
-        // }).then((response) => {
-        //     console.log(response)
-        // }).catch((err) => {
-        //     console.log(err)
-        // })
+        axios.post('/all_pass_filter',{
+            aValue
+        }).then((response) => {
+            console.log(response)
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     const handleAdding = () => {

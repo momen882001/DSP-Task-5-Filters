@@ -67,12 +67,12 @@ def generate_all_pass():
     data = request.get_json()
     print(zeros)
     print(poles)
-    a_value = data["a"]
+    a_value = data["aValue"]
     print(a_value)
 
     w  , angles = generate_all_pass_filter(a_value)
 
-    return {"freq" :list(w), "all_pass_phase_response" :list(angles)} , 200
+    return {"A" :a_value, "all_pass_phase_response" :list(angles)} , 200
 
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -80,15 +80,15 @@ def generate_all_pass():
 #       Fuction: generate all pass filter frequency response
 #       Return: all filter phase response
 
-@app.route("/api/all_pass_filter", methods=['POST'])
-def update_filter():
-    # get request data
-    data = request.get_json()
-    print(zeros)
-    print(poles)
-    a_values = data["a"]
-    print(a_values)
+# @app.route("/api/all_pass_filter", methods=['POST'])
+# def update_filter():
+#     # get request data
+#     data = request.get_json()
+#     print(zeros)
+#     print(poles)
+#     a_values = data["a"]
+#     print(a_values)
 
-    w, magnitude, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+#     w, magnitude, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
 
-    return {"freq" :list(w), "filter_phase_response" :list(angles)} , 200
+#     return {"freq" :list(w), "filter_phase_response" :list(angles)} , 200
