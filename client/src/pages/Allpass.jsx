@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import AllpassPlotting from '../components/AllpassPlotting/AllpassPlotting';
 import Form from '../components/Form/Form';
-import Slider from '../components/Slider/slider';
+import Slider from '../components/Slider/Slider';
 
 
 const Allpass = () => {

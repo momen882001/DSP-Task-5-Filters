@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './slider.css';
-function slider() {
+function Slider() {
   
   const imgs=[
     {id:0,value:"assets\all_pass_filters\-0.3.png"},
@@ -27,4 +27,4 @@ function slider() {
   );
 }
 
-export default slider;
+export default Slider;
