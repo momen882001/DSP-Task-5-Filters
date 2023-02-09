@@ -54,7 +54,7 @@ const AllpassPlotting = () => {
     <>
     <p>Original phase</p>
     <Plot data={[angle]} layout={layout} config={config} />
-    <p>Allpass for A = {aValueResponse}</p>
+    <p>All Pass Filter {aValueResponse === '' ? null : <span>For A = {aValueResponse}</span>}</p>
     <Plot data={[angleAllpass]} layout={layout} config={config} />
     </>
   )
