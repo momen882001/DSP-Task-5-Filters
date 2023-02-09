@@ -42,13 +42,14 @@ def getAllPassFrequencyResponse(z , p , a ):
     zeros = z[:]
     poles = p[:]
     for x in a :
-        poles.append(x)
-        zeros.append(1/np.conj(x))
-    print(zeros)
-    print(poles)
+        a_value = eval(x["A"])
+        poles.append(a_value)
+        zeros.append(1/np.conj(a_value))
+    # print(zeros)
+    # print(poles)
         
     freq ,magnitude ,angles =   generate_z_filter(zeros,poles)
-    return freq,magnitude,angles
+    return zeros,poles,angles
 
 
 def addAllPassZerosPoles(z , p , a ):
@@ -59,10 +60,17 @@ def addAllPassZerosPoles(z , p , a ):
         zeros.append(1/np.conj(x))
     return zeros,poles
 
-def parseToComplex(pairs):
+def pairs_to_complex(pairs):
     complexNumbers = [0]*len(pairs)
     for i in range(len(pairs)):
         x = round(pairs[i]["x"], 2)
         y = round(pairs[i]["y"], 2)
         complexNumbers[i] = x+ y*1j
     return complexNumbers
+
+def complex_to_pairs(complex_num):
+    pairs = []
+    for num in complex_num:
+        z_pair = {"x": num.real ,"y" : num.imag }
+        pairs.append(z_pair)
+    return pairs
