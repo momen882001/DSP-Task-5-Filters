@@ -65,8 +65,8 @@ def filtering_signal():
 def generate_all_pass():
     # get request data
     data = request.get_json()
-    print(zeros)
-    print(poles)
+    # print(zeros)
+    # print(poles)
     a_value = data["aValue"]
     print(a_value)
 

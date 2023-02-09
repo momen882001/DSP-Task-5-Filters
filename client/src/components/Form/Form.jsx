@@ -11,7 +11,11 @@ const Form = () => {
         aValue,
         setAvalue,
         aValueList,
-        setAvalueList
+        setAvalueList,
+        yAxisAllpass,
+        setYaxisAllpass,
+        A,
+        setA
     } = useContext(FileContext);
 
     const Blur = () => {
@@ -20,6 +24,8 @@ const Form = () => {
             aValue
         }).then((response) => {
             console.log(response)
+            setYaxisAllpass(response.data.all_pass_phase_response)
+            setA(response.data.A)
         }).catch((err) => {
             console.log(err)
         })
