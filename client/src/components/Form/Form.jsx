@@ -14,9 +14,22 @@ const Form = () => {
         setAvalueList,
         yAxisAllpass,
         setYaxisAllpass,
-        A,
-        setA
+        aValueResponse, 
+        setAvalueResponse,
+        setXaxisAllpass,
+        setPhase
     } = useContext(FileContext);
+
+    useEffect(() => {
+        axios.post('/all_pass_filter', {
+            aValueList
+        }).then((response) => {
+            console.log(response)
+            setPhase(response.data.filter_phase_response)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }, [aValueList])
 
     const Blur = () => {
         console.log("done")
@@ -25,11 +38,14 @@ const Form = () => {
         }).then((response) => {
             console.log(response)
             setYaxisAllpass(response.data.all_pass_phase_response)
-            setA(response.data.A)
+            setAvalueResponse(response.data.aValue)
+            setXaxisAllpass(response.data.frequency)
         }).catch((err) => {
             console.log(err)
         })
     }
+
+    console.log(aValueList)
 
     const handleAdding = () => {
         setAvalueList([...aValueList, {

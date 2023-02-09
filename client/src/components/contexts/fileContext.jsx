@@ -28,9 +28,10 @@ const FileContextProvider = ({ children }) => {
     // Form
 
     const [aValue, setAvalue] = useState('');
-    const [a, setA] = useState('');
+    const [aValueResponse, setAvalueResponse] = useState('');
     const [aValueList, setAvalueList] = useState([]);
     const [yAxisAllpass, setYaxisAllpass] = useState([]);
+    const [XAxisAllpass, setXaxisAllpass] = useState([]);
 
 
 
@@ -67,10 +68,12 @@ const FileContextProvider = ({ children }) => {
                 setAvalue,
                 aValueList,
                 setAvalueList,
+                aValueResponse,
+                setAvalueResponse,
                 yAxisAllpass,
                 setYaxisAllpass,
-                a,
-                setA
+                XAxisAllpass,
+                setXaxisAllpass
             }}>
             {children}
         </FileContext.Provider>

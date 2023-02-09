@@ -7,10 +7,12 @@ const AllpassPlotting = () => {
     const {
         frequency,
         phase,
-        aValue,
-        A,
         yAxisAllpass,
+        aValueResponse, 
+        XAxisAllpass,
       } = useContext(FileContext);
+
+      console.log(yAxisAllpass)
 
       var angle = {
         x: frequency,
@@ -23,7 +25,7 @@ const AllpassPlotting = () => {
       };
 
       var angleAllpass = {
-        x: frequency,
+        x: XAxisAllpass,
         y: yAxisAllpass,
         type: "scatter",
         line: {
@@ -52,7 +54,7 @@ const AllpassPlotting = () => {
     <>
     <p>Original phase</p>
     <Plot data={[angle]} layout={layout} config={config} />
-    <p>Allpass for A = {A}</p>
+    <p>Allpass for A = {aValueResponse}</p>
     <Plot data={[angleAllpass]} layout={layout} config={config} />
     </>
   )
