@@ -29,7 +29,8 @@ const PolesZeros = () => {
         let zeros = []
         let poles = []
         pointsList.map((point) => {
-            point.mode === false ?
+            console.log(point.mode)
+            point.mode === 'false' ?
                 zeros.push({
                     x: `${point.x}`,
                     y: `${point.y}`                
@@ -70,7 +71,7 @@ const PolesZeros = () => {
         setPointList([...pointsList, {
             y: positionY,
             x: positionX,
-            mode: mode,
+            mode: `${mode}`,
         }])
     }
 
@@ -83,6 +84,7 @@ const PolesZeros = () => {
     }
     console.log("hello")
     console.log(pointsList)
+    console.log(mode)
 
     return (
         <>
@@ -104,7 +106,7 @@ const PolesZeros = () => {
                 <div className='circle'></div>
                 {pointsList.map((point, index) => {
                     return (
-                        point.mode === false ? <div onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146), left: ((point.x * 125) + 147) }} ></div>
+                        point.mode === 'false' ? <div onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146), left: ((point.x * 125) + 147) }} ></div>
                             :
                             <div onContextMenu={(e) => rightClick(index, e)} key={index} className='pole' style={{ top: ((point.y * (125 * -1)) + 139), left: ((point.x * 125) + 147) }} >X</div>
                     )

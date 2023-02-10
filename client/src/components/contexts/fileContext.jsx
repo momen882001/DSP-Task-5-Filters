@@ -5,7 +5,7 @@ const FileContextProvider = ({ children }) => {
 
     // zeros & poles component
 
-    const [mode, setMode] = useState(false)
+    const [mode, setMode] = useState('false')
     const [positionX, setPositionX] = useState()
     const [positionY, setPositionY] = useState()
     const [pointsList,setPointList] = useState([])
