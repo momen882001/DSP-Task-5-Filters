@@ -42,15 +42,15 @@ const PolesZeros = () => {
         axios.post('/get_zeros_poles', {
             zeros, poles
         }).then((response) => {
-            console.log(response)
+            // console.log(response)
             setFrequency(response.data.freq)
             setMagnitude(response.data.magnitude)
             setPhase(response.data.angles)
         }).catch((err) => {
-            console.log(err)
+            // console.log(err)
         })
-        console.log(zeros)
-        console.log(poles)
+        // console.log(zeros)
+        // console.log(poles)
     }, [pointsList])
 
 
@@ -63,7 +63,7 @@ const PolesZeros = () => {
     }
 
     const mouseLeave = () => {
-        console.log("mouseLeave");
+        // console.log("mouseLeave");
     }
 
     const draw = () => {

@@ -2,6 +2,8 @@ import React, { Component} from 'react';
 import { CSVLink } from "react-csv";
 import './ImportExport.css'
 import { FileContext } from '../contexts/fileContext'
+import * as XLSX from 'xlsx';
+
 
 
 // set the CSV headers
@@ -10,6 +12,25 @@ const headers = [
   { label: "x", key: "x" },
   { label: "mode", key: "mode" },
 ];
+
+
+//convert csv text to objects 
+const processCSV = (str, delim=',') => {
+  const headers = str.slice(0,str.indexOf('\n')).split(delim);
+  const rows = str.slice(str.indexOf('\n')+1).split('\n');
+
+  const newArray = rows.map( row => {
+      const values = row.split(delim);
+      const eachObject = headers.reduce((obj, header, i) => {
+          obj[header] = values[i];
+          return obj;
+      }, {})
+      return eachObject;
+  })
+  return newArray
+ }
+
+
 
 //Implement the import/export class
 class ImportExport extends Component {
@@ -39,34 +60,33 @@ class ImportExport extends Component {
     });
   }
    
-  processCSV = (str, delim=',') => {
-    const headers = str.slice(0,str.indexOf('\n')).split(delim);
-    const rows = str.slice(str.indexOf('\n')+1).split('\n');
-
-    const newArray = rows.map( row => {
-        const values = row.split(delim);
-        const eachObject = headers.reduce((obj, header, i) => {
-            obj[header] = values[i];
-            return obj;
-        }, {})
-        return eachObject;
-    })
-
-    this.context.setCsvArray(newArray)
-    console.log(this.context.csvArray)
-   }
-
-  readFilter = () => {
-  const file = this.context.csvFile;
-  const reader = new FileReader();
-
-  reader.onload = function(e) {
-      const text = e.target.result;
-      console.log(text);
-      self.processCSV(text)
+  handleFileUpload = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      /* Parse data */
+      const bstr = evt.target.result;
+      const wb = XLSX.read(bstr, { type: 'binary' });
+      /* Get first worksheet */
+      const wsname = wb.SheetNames[0];
+      const ws = wb.Sheets[wsname];
+      /* Convert array of arrays */
+      const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
+      console.log("gooooooo")
+      console.log(data)
+      const newdata =  processCSV(data);
+      console.log("newdata1")
+      console.log(newdata);
+      console.log("oldpointlist")
+      console.log(this.context.pointsList)
+      this.context.setPointList(newdata);
+      console.log("newpointlist")
+      console.log(this.context.pointsList)
+      console.log("finish")
+    };
+    reader.readAsBinaryString(file);
   }
-  reader.readAsText(file);
-  }
+ 
 
   render() {
     const { data } = this.state;
@@ -90,11 +110,7 @@ class ImportExport extends Component {
             type='file'
             accept='.csv'
             id='csvFile'
-            onChange={(e) => {
-                this.context.setCsvFile(e.target.files[0])
-                e.preventDefault()
-                if(this.context.csvFile)this.readFilter()
-            }}
+            onChange={this.handleFileUpload}
         >
         </input>
 
