@@ -4,6 +4,7 @@ import Plot from "react-plotly.js";
 import { FileContext } from '../contexts/fileContext'
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import FullScreenDialog from '../../pages/FullScreenDialog';
 
 
 const Signals = () => {
@@ -83,11 +84,7 @@ const Signals = () => {
       <Plot data={[mag]} layout={layout} config={config} />
       {/* phase */}
       <Plot data={[angle]} layout={layout} config={config} />
-      <Link to='/allpass'>
-        <Button>
-          Correct phase
-        </Button>
-      </Link>
+        <FullScreenDialog/>
     </div>
   )
 }

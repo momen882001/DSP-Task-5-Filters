@@ -16,11 +16,11 @@ function Slider() {
 } = useContext(FileContext);
   
   const imgs=[
-    {id:0, path: img1 , value :-0.3},
-    {id:1, path: img2 , value :-0.5},
-    {id:2, path: img3 , value :-0.7},
-    {id:3, path: img4 , value :-1.1},
-    {id:4, path: img5 , value :-1.5},
+    {id:0, path: img1 , value :"-0.3"},
+    {id:1, path: img2 , value :"-0.5"},
+    {id:2, path: img3 , value :"-0.7"},
+    {id:3, path: img4 , value :"-1.1"},
+    {id:4, path: img5 , value :"-1.5"},
   ]
   const [wordData,setWordData]=useState(imgs[0])
   const handleClick=(index)=>{

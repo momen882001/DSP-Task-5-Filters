@@ -12,13 +12,13 @@ const Allpass = () => {
     <Container fluid>
       <Row>
         <Col style={{ display: "flex", flexDirection: "column", alignItems: "center" }} lg={4} md={6} sm={6} xs={12}>
-          <Slider />
+          {/* <Slider /> */}
         </Col>
         <Col style={{ display: "flex", flexDirection: "column", alignItems: "center" }} lg={4} md={6} sm={6} xs={12}>
-          <Form />
+          {/* <Form /> */}
         </Col>
         <Col style={{ display: "flex", flexDirection: "column", alignItems: "center" }} lg={4} md={6} sm={6} xs={12}>
-          <AllpassPlotting />
+          {/* <AllpassPlotting /> */}
         </Col>
       </Row>
     </Container>

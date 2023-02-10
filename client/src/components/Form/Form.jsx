@@ -52,6 +52,14 @@ const Form = () => {
             A: aValue
         }])
         setAvalue('')
+        // axios.post('/all_pass_filter_response', {
+        //     aValueList
+        // }).then((response) => {
+        //     console.log(response)
+        //     setPhase(response.data.filter_phase_response)
+        // }).catch((err) => {
+        //     console.log(err)
+        // })
     }
 
     const handleDeleting = (index,e) => {
@@ -59,6 +67,14 @@ const Form = () => {
         let newAvalueList = [...aValueList]
         newAvalueList.splice(index,1)
         setAvalueList(newAvalueList)
+        // axios.post('/all_pass_filter_response', {
+        //     aValueList
+        // }).then((response) => {
+        //     console.log(response)
+        //     setPhase(response.data.filter_phase_response)
+        // }).catch((err) => {
+        //     console.log(err)
+        // })
     }
 
 
@@ -81,11 +97,6 @@ const Form = () => {
                     )
                 })}
             </div>
-            <Link to='/'>
-                <Button>
-                    Back
-                </Button>
-            </Link>
         </div>
     )
 }

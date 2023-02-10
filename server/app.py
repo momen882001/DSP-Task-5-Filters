@@ -104,7 +104,7 @@ def update_filter():
     print(type(a_values))
     print("A"*50)
 
-    zeros, poles, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+    _, _, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
     print(zeros)
     print(poles)
 
