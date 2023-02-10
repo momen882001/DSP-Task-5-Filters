@@ -31,12 +31,12 @@ const PolesZeros = () => {
         pointsList.map((point) => {
             point.mode === false ?
                 zeros.push({
-                    x: point.x,
-                    y: point.y
+                    x: `${point.x}`,
+                    y: `${point.y}`                
                 }) :
                 poles.push({
-                    x: point.x,
-                    y: point.y
+                    x: `${point.x}`,
+                    y: `${point.y}` 
                 })
         })
         axios.post('/get_zeros_poles', {
