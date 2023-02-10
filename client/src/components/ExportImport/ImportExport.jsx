@@ -81,13 +81,14 @@ class ImportExport extends Component {
       console.log(this.context.pointsList)
       this.context.setPointList(newdata);
       console.log("newpointlist")
-      console.log(this.context.pointsList)
-      console.log("finish")
+      
     };
     reader.readAsBinaryString(file);
   }
+
  
 
+ 
   render() {
     const { data } = this.state;
     return (

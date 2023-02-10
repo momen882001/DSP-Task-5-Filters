@@ -81,7 +81,8 @@ const PolesZeros = () => {
         newPointsList.splice(index, 1);
         setPointList(newPointsList);
     }
-    // console.log(pointsList)
+    console.log("hello")
+    console.log(pointsList)
 
     return (
         <>
