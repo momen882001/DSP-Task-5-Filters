@@ -63,8 +63,10 @@ def addAllPassZerosPoles(z , p , a ):
 def pairs_to_complex(pairs):
     complexNumbers = [0]*len(pairs)
     for i in range(len(pairs)):
-        x = round(pairs[i]["x"], 2)
-        y = round(pairs[i]["y"], 2)
+        print(eval(pairs[i]["x"]))
+        x = round(eval(pairs[i]["x"]), 2)
+        y = round(eval(pairs[i]["y"]), 2)
+
         complexNumbers[i] = x+ y*1j
     return complexNumbers
 
