@@ -44,9 +44,9 @@ const AllpassPlotting = () => {
         height: 240,
         margin: {
           l: 20,
-          r: 0,
+          r: 10,
           // b: 0,
-          t: 0
+          t: 10
         }
       };
 

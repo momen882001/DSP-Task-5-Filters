@@ -57,10 +57,10 @@ const PolesZeros = () => {
 
 
     const mouseMove = (event) => {
-        setPositionX((event.clientX - 228) / 125);
-        setPositionY((203 - event.clientY) / 125);
-        // console.log(positionX);
-        // console.log(positionY);
+        setPositionX((event.clientX - 323 )/ 125 );
+        setPositionY((274 - event.clientY) / 125);
+        console.log(positionX);
+        console.log(positionY);
     }
 
     const mouseLeave = () => {

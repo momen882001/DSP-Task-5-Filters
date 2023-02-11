@@ -79,12 +79,12 @@ const Signals = () => {
 
   return (
     <div style={{display:"flex",flexDirection:"column",alignItems:"center"}} >
-      <div><p>Magnitude Response</p></div>
+      <p>Magnitude Response</p>
 
       {/*  mag */}
       <Plot data={[mag]} layout={layout} config={config} />
       {/* phase */}
-      <div><p>Phase Response</p></div>
+      <p>Phase Response</p>
       <Plot data={[angle]} layout={layout} config={config} />
         <FullScreenDialog/>
     </div>

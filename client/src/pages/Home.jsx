@@ -10,22 +10,28 @@ import Test from '../components/Signals/Test';
 import Slider from '../components/Slider/Slider';
 import PolesZeros from '../components/Zeros&poles/PolesZeros';
 import FullScreenDialog from './FullScreenDialog';
-import style from './Home.css'
+import './Home.css'
 
 const Home = () => {
     return (
         <Container fluid>
-            <Row className={style.Home}>
-                <Col style={{display:"flex",flexDirection:"column",alignItems:"center", background:"rgb(139 157 195 / 22%)", borderRadius:"22px", margin: "15px 10px 0px 60px"}} lg={3} md={5} sm={6} xs={12}>
-                    <div><p>Generate Filter</p></div>
+            <Row>
+                <Col style={{ }} className="col1" lg={3} md={5} sm={6} xs={12}>
+                    <div className='col1'>
+                    <p>Generate Filter</p>
                     <PolesZeros/>
+                    </div>
+                    
                 </Col>
-                <Col style={{display:"flex", background:"rgb(139 157 195 / 22%)",flexDirection:"column", alignItems:"center", borderRadius:"22px", margin: "15px 10px 0px 10px"}} lg={4} md={6} sm={6} xs={12}>
+                <Col className='col2'  lg={4} md={6} sm={6} xs={12}>
                      <Plotting/>
                 </Col>
-                <Col style={{background:"rgb(139 157 195 / 22%)", borderRadius:"22px", margin: "15px 50px 0px 10px"}} lg={4} md={6} sm={6} xs={12}>
-                     <div><p>Generate Signal</p></div>
-                    <Signals/>
+                <Col  className='col3' lg={4} md={6} sm={6} xs={12}>
+                     <div>
+                     <p>Generate Signal</p>
+                     <Signals/>
+                     </div>
+                    
                 </Col>
             </Row>
         </Container>
