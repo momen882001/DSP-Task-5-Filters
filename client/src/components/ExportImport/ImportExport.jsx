@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 
 
 
+
 // set the CSV headers
 const headers = [
   { label: "y", key: "y" },
@@ -18,48 +19,56 @@ const headers = [
 const processCSV = (str, delim=',') => {
   const headers = str.slice(0,str.indexOf('\n')).split(delim);
   const rows = str.slice(str.indexOf('\n')+1).split('\n');
-
+  
   const newArray = rows.map( row => {
-      const values = row.split(delim);
-      const eachObject = headers.reduce((obj, header, i) => {
-          obj[header] = values[i];
+    const values = row.split(delim);
+    const eachObject = headers.reduce((obj, header, i) => {
+      obj[header] = values[i];
           return obj;
       }, {})
       return eachObject;
-  })
-  return newArray
- }
-
-
-
-//Implement the import/export class
-class ImportExport extends Component {
-
-  static contextType = FileContext
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    }
-    this.csvLinkEl = React.createRef();
+    })
+    return newArray
   }
-
-  // get the filter data from the unit circle
-  getUserList = () => {
-    return this.context.pointsList;
+  
+  
+  
+  //Implement the import/export class
+  class ImportExport extends Component {
+    
+    static contextType = FileContext
+    
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: [],
       }
+      this.csvLinkEl = React.createRef();
+      this.inputFileRef = React.createRef();
+    }
+    
+    // get the filter data from the unit circle
+    getUserList = () => {
+      return this.context.pointsList;
+    }
+    
+    // force input clicking
+     handle_button_click = () => {
+      this.inputFileRef.current.click();
+    };
 
-  // download the csv file action
-  downloadFilter = async () => {
-    const data = await this.getUserList();
-    this.setState({ data: data }, () => {
-      setTimeout(() => {
+
+
+    // download the csv file action
+    downloadFilter = async () => {
+      const data = await this.getUserList();
+      this.setState({ data: data }, () => {
+        setTimeout(() => {
         this.csvLinkEl.current.link.click();
       });
     });
   }
-   
+  
   handleFileUpload = e => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -107,14 +116,23 @@ class ImportExport extends Component {
           ref={this.csvLinkEl}
         />
 
+
+        <button onClick={this.handle_button_click}>
+          <article>
+            <p>Import Filter</p>
+          </article>
+        </button>
+
+
         <input
             type='file'
             accept='.csv'
             id='csvFile'
+            ref={this.inputFileRef}
             onChange={this.handleFileUpload}
+            style={{ display: "none" }}
         >
         </input>
-
       </div>      
     );
   }

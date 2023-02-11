@@ -46,7 +46,7 @@ export default function FullScreenDialog() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar  style={{backgroundColor: "red"}}   sx={{ position: 'relative' }}>
           <Toolbar>
             <IconButton
               edge="start"
