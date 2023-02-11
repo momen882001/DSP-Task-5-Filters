@@ -1,7 +1,7 @@
 .circle-container {
     width: 300px;
     height: 300px;
-    background-color: #333;
+    background-color: #f7f7f7;
     border-radius: 10px;
     margin-top: 1rem;
     position: relative;
@@ -12,7 +12,7 @@
 .circle {
     width: 250px;
     height: 250px;
-    border: 1px solid rgb(181, 195, 235);
+    border: 1px solid #3b5998;
     border-radius: 50%;
     margin-left: calc(50px/2);
     margin-top: calc(50px/2);
@@ -22,13 +22,13 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #dc3545;
+    background-color: #0d6efd;
     position: absolute;
     cursor: all-scroll;
 }
 
 .pole {
-    color: #0d6efd;
+    color: #dc3545;
     position: absolute;
     cursor: all-scroll;
 }
@@ -36,7 +36,7 @@
 .y-axis {
     width: 300px;
     height: 1px;
-    background-color: whitesmoke;
+    background-color: #3b5998;
     position: absolute;
     transform: rotate(-90deg);
     top: calc(300px/2);
@@ -45,7 +45,7 @@
 .x-axis {
     width: 300px;
     height: 1px;
-    background-color: whitesmoke;
+    background-color: #3b5998;
     position: absolute;
     top: calc(300px/2);
 }

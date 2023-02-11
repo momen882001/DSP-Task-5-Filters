@@ -11,3 +11,38 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  button {
+    background-color: #3b5998;
+    color: white !;
+    border-radius: 10px !important;
+    border: none;
+    width: 200px !important;
+    font-size: 25px !important;
+    font-family: 'Poppins', sans-serif;
+    
+  }
+
+  input {
+  background-color: #3b5998;
+  color: white !important;
+  border-radius: 10px !important;
+  border: none;
+  margin-top: 40px !important;
+  margin-bottom: 20px !important;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 2px !important;
+  font-size: 25px !important;
+  width: 200px !important;
+
+  }
+  .container {
+    flex-direction: column;
+    background-color: black;
+  }
+
+  .p {
+    margin-top: 0 !important;
+    margin-bottom: 0rem !;
+    color: white !important;
+}

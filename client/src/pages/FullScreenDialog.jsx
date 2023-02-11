@@ -17,7 +17,6 @@ import { Row } from 'react-bootstrap';
 import Slider from '../components/Slider/Slider';
 import Form from '../components/Form/Form';
 import AllpassPlotting from '../components/AllpassPlotting/AllpassPlotting';
-
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -37,9 +36,9 @@ export default function FullScreenDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Correct phase
-      </Button>
+      <button variant="outlined" onClick={handleClickOpen} style={{backgroundColor: "#3b5998",color: "white", borderRadius: "10px",border: "none",width: "500px !important",fontSize: "50px",fontFamily: "'Poppins', sans-serif", marginTop: "20px", marginBottom:"10px"}}>Correct phase</button>
+
+   
       <Dialog
         fullScreen
         open={open}

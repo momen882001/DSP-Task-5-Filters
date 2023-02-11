@@ -1,8 +1,9 @@
 import React, { Component} from 'react';
 import { CSVLink } from "react-csv";
-import './ImportExport.css'
 import { FileContext } from '../contexts/fileContext'
 import * as XLSX from 'xlsx';
+import style from '../ExportImport/ImportExport.css'
+import { fontSize, fontWeight } from '@mui/system';
 
 
 
@@ -116,10 +117,10 @@ const processCSV = (str, delim=',') => {
           ref={this.csvLinkEl}
         />
 
-
-        <button onClick={this.handle_button_click}>
+        <div className={style.container}>
+        <button onClick={this.handle_button_click} >
           <article>
-            <p>Import Filter</p>
+            <p style={{color:"white", marginTop: "0", marginBottom: "0", fontWeight:"normal"}}>Import Filter</p>
           </article>
         </button>
 
@@ -133,6 +134,8 @@ const processCSV = (str, delim=',') => {
             style={{ display: "none" }}
         >
         </input>
+        </div>
+        
       </div>      
     );
   }

@@ -92,9 +92,9 @@ const PolesZeros = () => {
                 className="custom-btn"
                 checked={mode}
                 onlabel='Poles'
-                onstyle='primary'
+                onstyle='danger'
                 offlabel='Zeros'
-                offstyle='danger'
+                offstyle='primary'
                 style='w-50'
                 onChange={(e) => {
                     setMode(!mode)

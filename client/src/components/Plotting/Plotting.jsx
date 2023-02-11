@@ -47,7 +47,7 @@ const Signals = () => {
   }
 
   var layout = {
-    width: 320,
+    width: 420,
     height: 240,
     margin: {
       l: 20,
@@ -57,7 +57,6 @@ const Signals = () => {
     },
     xaxis: {
       automargin: true,
-      tickangle: 90,
       title: {
         text: "Frequency",
         standoff: 20
@@ -79,10 +78,13 @@ const Signals = () => {
   };
 
   return (
-    <div >
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center"}} >
+      <div><p>Magnitude Response</p></div>
+
       {/*  mag */}
       <Plot data={[mag]} layout={layout} config={config} />
       {/* phase */}
+      <div><p>Phase Response</p></div>
       <Plot data={[angle]} layout={layout} config={config} />
         <FullScreenDialog/>
     </div>
