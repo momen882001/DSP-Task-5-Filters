@@ -1,0 +1,41 @@
+.table {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 10px solid blue;
+}
+input {
+    background-color: none;
+}
+
+.add {
+    background-color: transparent !important;
+    border:  none !important;
+    width: 20px !important;
+}
+
+.type {
+   background-color: 	white;
+   color: #3b5998 !important;
+   border-radius: 10px; 
+   border-color: #dfe3ee;
+   margin-top: 5px !important;
+   width: 385px !important;
+}
+
+.value{
+    width: 385px;
+    text-align-last: left;
+}
+
+.border {
+    background-color: rgb(139 157 195 / 22%);
+    width: 450px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 22px;
+}
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

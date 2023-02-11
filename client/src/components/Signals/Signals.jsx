@@ -73,22 +73,29 @@ const Signals = () => {
   }
 
   var layout = {
-    width: 320,
+    width: 420,
     height: 240,
     margin: {
-      l: 20,
+      l: 0,
       r: 0,
       // b: 0,
       t: 0
-    }
+    },
+    yaxis: {
+      automargin: true,
+      tickangle: 90,
+      title: {
+        text: "Amplitude",
+        standoff: 20
+      }},
   };
 
   return (
     <div className='signals-contain'>
       <div className='moving-area' onMouseMove={mouseMove} onMouseLeave={mouseLeave}></div>
-      {/* input signal */}
-      <Plot data={[input]} layout={layout} config={config} />
-      {/* output signal */}
+      <p>Input Signal</p>
+      <Plot data={[input]} layout={layout} config={config} className='graph' />
+      <p>Output Signal</p>
       <Plot data={[output]} layout={layout} config={config} />
     </div>
   )

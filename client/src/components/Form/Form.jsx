@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { FileContext } from '../contexts/fileContext'
 import axios from '../Global/axios'
-
+import './Form.css'
+import { IoIosAddCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
 const Form = () => {
 
     const {
@@ -82,17 +83,20 @@ const Form = () => {
     return (
         <div>
             <div>
-                <input type="text" value={aValue} onChange={(e) => setAvalue(e.target.value)} onBlur={Blur} />
-                <Button onClick={handleAdding} >
-                    Add
-                </Button>
+                <p className='header'>A Value</p>
+                <input type="text" value={aValue} onChange={(e) => setAvalue(e.target.value)} onBlur={Blur} className='type'/>
+            
+                <button onClick={handleAdding} className='add'>
+                 <IoIosAddCircleOutline/>
+                </button>
                 {aValueList.map((value, index) => {
                     return (
-                        <div  key={index}>
-                            <p>{value.A}</p>
-                            <Button onClick={(e) => handleDeleting(index,e)} >
-                                Delete
-                            </Button>
+                        <div  key={index} className='table'>
+                            <p className='value'>{value.A}</p>
+                            <button onClick={(e) => handleDeleting(index,e)} className='add'>
+                           <IoMdRemoveCircleOutline/>
+                            </button>
+                            
                         </div>
                     )
                 })}

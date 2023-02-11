@@ -17,6 +17,7 @@ import { Row } from 'react-bootstrap';
 import Slider from '../components/Slider/Slider';
 import Form from '../components/Form/Form';
 import AllpassPlotting from '../components/AllpassPlotting/AllpassPlotting';
+import './Allpass.css'
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -45,7 +46,7 @@ export default function FullScreenDialog() {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar  style={{backgroundColor: "red"}}   sx={{ position: 'relative' }}>
+        <AppBar  style={{backgroundColor: "#3b5998"}}   sx={{ position: 'relative' }}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -63,7 +64,9 @@ export default function FullScreenDialog() {
               <Slider />
             </Col>
             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center" }} lg={4} md={6} sm={6} xs={12}>
+              <div className='border'>
               <Form />
+              </div>
             </Col>
             <Col style={{ display: "flex", flexDirection: "column", alignItems: "center" }} lg={4} md={6} sm={6} xs={12}>
               <AllpassPlotting />

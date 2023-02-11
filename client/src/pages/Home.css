@@ -20,6 +20,7 @@ button {
     margin: 15px 10px 0px 60px;
     background: rgb(139 157 195 / 22%); 
     border-radius: 22px;
+    padding-bottom: 15px;
 }
 
 .col2 {

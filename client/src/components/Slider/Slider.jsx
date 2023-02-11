@@ -40,7 +40,7 @@ function Slider() {
       <div className='flex_row'>
         {imgs.map((data,i)=>
         <div className="thumbnail" key={i} >
-          <img alt='not loaded' className={wordData.id === i ?"clicked":""} src={data.path} onClick={()=>handleClick(i)} height="70" width="100" />
+          <img alt='not loaded' className={wordData.id === i ?"clicked":""} src={data.path} onClick={()=>handleClick(i)} height="120" width="230" />
         </div>
         )}
       </div>
