@@ -1,7 +1,11 @@
+
 .main{
+    height: 80vh;
+    width: 100%;
     text-align: center;
     background: #a1b1d1; 
     border-radius: 22px;
+    overflow-y:scroll;
   }
   .flex_row{
     justify-content: center;

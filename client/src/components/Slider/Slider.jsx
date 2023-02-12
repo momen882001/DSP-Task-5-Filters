@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import './slider.css';
 import img1 from '../../assets/images/-0.3.png'
-import img2 from '../../assets/images/-0.5.png'
-import img3 from '../../assets/images/-0.7.png'
+import img2 from '../../assets/images/-0.7.png'
 import img4 from '../../assets/images/-1.1.png'
 import img5 from '../../assets/images/-1.5.png'
+import img6 from '../../assets/images/0.5j.png'
+import img7 from '../../assets/images/0.9j.png'
 import { useContext} from 'react'
 import { FileContext } from '../contexts/fileContext'
 // import axios from '../Global/axios'
@@ -17,10 +18,11 @@ function Slider() {
   
   const imgs=[
     {id:0, path: img1 , value :"-0.3"},
-    {id:1, path: img2 , value :"-0.5"},
-    {id:2, path: img3 , value :"-0.7"},
-    {id:3, path: img4 , value :"-1.1"},
-    {id:4, path: img5 , value :"-1.5"},
+    {id:1, path: img2 , value :"-0.7"},
+    {id:2, path: img4 , value :"-1.1"},
+    {id:3, path: img5 , value :"-1.5"},
+    {id:4, path: img6 , value :"0.5j"},
+    {id:5, path: img7 , value :"0.9j"},
   ]
   const [wordData,setWordData]=useState(imgs[0])
   const handleClick=(index)=>{
