@@ -25,20 +25,23 @@ def generate_filter():
     global  poles
     # get request data
     data = request.get_json()
+    # get zeros and poles from request data
     zeros_pairs = data["zeros"]
     poles_pairs = data["poles"]
-    print("z"*100)
-    print(zeros_pairs)
+    # convert zeros and poles to complex numbers
     zeros = pairs_to_complex(zeros_pairs)
-    print(zeros)
-    print(type(zeros))
     poles = pairs_to_complex(poles_pairs)
-    print("p"*100)
-    print(poles_pairs)
-    print(poles)
-    print("V"*60)
-    print(zeros)
-    print(poles)
+    # print("z"*100)
+    # print(zeros_pairs)
+    # print(zeros)
+    # print(type(zeros))
+    # print("p"*100)
+    # print(poles_pairs)
+    # print(poles)
+    # print("V"*60)
+    # print(zeros)
+    # print(poles)
+    # generate filter from zeros and poles
     w,magnitude,angles = generate_z_filter(zeros,poles)
     return {"freq" :list(w), "magnitude" :list(magnitude), "angles": list(angles)},200
 
@@ -50,14 +53,16 @@ def generate_filter():
 def filtering_signal():
     # get request data
     data = request.get_json()
-    print("F"*60)
-    print(zeros)
-    print(poles)
+    # get signal from request data
     signal = data["signalPositionY"]
-    # print(signal)
+    # filter signal
     filtered_signal = filter_signal(zeros,poles,signal)
-    # print(filtered_signal)
-    print("F"*60)
+    # print(signal)
+    # print("F"*60)
+    # print(zeros)
+    # print(poles)
+    # # print(filtered_signal)
+    # print("F"*60)
     return {"filtered_signal" :list(abs(filtered_signal))},200
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -69,16 +74,18 @@ def filtering_signal():
 def generate_all_pass():
     # get request data
     data = request.get_json()
-    # print(zeros)
-    # print(poles)
+    # get a value from request data
     a_value = data["aValue"]
-    print(a_value)
     a_value =  eval(a_value)
-    print(a_value)
-    print(type(a_value))
+    # generate all pass filter
     w  , angles = generate_all_pass_filter(a_value)
-    print("Done")
     a_val = f"{a_value}"
+    # print(a_value)
+    # print(a_value)
+    # print("Done")
+    # print(type(a_value))
+    # # print(zeros)
+    # # print(poles)
     return {"frequency" : list(w),"aValue" :a_val, "all_pass_phase_response" :list(angles)} , 200
 
 
@@ -91,16 +98,17 @@ def generate_all_pass():
 def update_filter():
     global  zeros 
     global  poles
-    print(zeros)
-    print(poles)
-    print("#"*50)
     # get request data
     data = request.get_json()
     a_values = data["aValueList"]
-    print(a_values)
-    print(type(a_values))
-    print("A"*50)
+    # get filter phase response from zeros and poles and a values
     freq, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
-    print(zeros)
-    print(poles)
+    # print(a_values)
+    # print(type(a_values))
+    # print("A"*50)
+    # print(zeros)
+    # print(poles)
+    # print("#"*50)
+    # print(zeros)
+    # print(poles)
     return {"filter_phase_response" :list(angles)} , 200
