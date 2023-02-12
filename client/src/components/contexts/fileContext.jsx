@@ -73,7 +73,8 @@ const FileContextProvider = ({ children }) => {
                 yAxisAllpass,
                 setYaxisAllpass,
                 XAxisAllpass,
-                setXaxisAllpass
+                setXaxisAllpass,
+                
             }}>
             {children}
         </FileContext.Provider>

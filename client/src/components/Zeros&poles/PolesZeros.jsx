@@ -1,121 +1,81 @@
 import React from 'react'
 import './PolesZeros.css'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FileContext } from '../contexts/fileContext'
 import axios from '../Global/axios'
 import ImportExport from '../ExportImport/ImportExport'
 
 const PolesZeros = () => {
 
-//   let offsetX,offsetY
-//   const move=e=>
-//   {
-//     const el=e.target
-//     el.style.left = `${e.pageX-offsetX}px`
-//     el.style.top = `${e.pageY-offsetY}px`
-//     console.log("Move");
-//     // console.log("Page Offset X");
-//     // console.log(e.pageX-offsetX);
-//     // console.log(e.pageX);
-//     // console.log(offsetX);
-//     // console.log("Page Offset Y");
-//     // console.log(e.pageY-offsetY);
-//     // console.log(e.pageY);
-//     // console.log(offsetY);
-//   }
-//   const add=(index,e)=>
-//   {
-//     const el=e.target
-//     offsetX=positionX-el.getBoundingClientRect().left
-//     offsetY=positionY-el.getBoundingClientRect().top
-//     el.addEventListener('mousemove',move)
-//     console.log("ADD X");
+    const [isDraggable, setIsDraggable] = useState(false);
 
-//     // console.log(e.target);
-//     // console.log(positionX);
-//     // console.log("offset X");
-//     // console.log(offsetX);
-//     // console.log("ADD Y");
-//     // console.log(positionY);
-//     // console.log("offset Y");
-//     // console.log(offsetY);
+    const selectPoint = (e, index) => {
+        e.stopPropagation();
+        setIsDraggable(!isDraggable);
+        console.log(e.currentTarget.style.left)
+        const myPoint = pointsList[index];
+        myPoint.x = (e.clientX - 322) / 125
+        myPoint.y = (465 - e.clientY) / 125;
+    };
 
-//     // e.stopPropagation();
-//     // e.preventDefault();
-//     console.log(index);
-//     // let newPointsList = [...pointsList];
-//     // newPointsList.splice(index-1, 1);
-//     // setPointList(newPointsList);
-
-//   }
-//   const remove=()=>{
-//     // const el=target
-//     console.log("Remove X");
-//     // console.log(target);
-//     console.log(positionX);
-//     // el.removeEventListener('mousemove',move)
-//   }
-// //   const Wrapper=styled.div`
-// //   width: 50px;
-// //   height: 50px;
-// //   border-radius: 29px;
-// //   box-shadow: 0 0 6px;
-// //   position: absolute;
-// //   top: 40px;
-// //   left: 227px;
-// //   background-color: rgb(0,0,0,0.5);
-// //   cursor:pointer;
-// //   `
+    // onMouseMove
+    const dragPoint = (e, index) => {
+        e.stopPropagation();
+        console.log(e.clientY)
+        console.log(pointsList)
+        // e.currentTarget.style.left = e.clientX - 100 + "px"
+        if (isDraggable) {
+            console.log("fgnaejg")
+            //   e.currentTarget.style.cursor = "grabbing";
+            //   if (
+            //     e.clientX < startBorderX - marginX &&
+            //     e.clientX > endBorderX + marginX
+            //   ) {
+            e.currentTarget.style.left = (e.clientX - 176) + "px";
+            //   }
+            //   if (
+            //     e.clientY < startBorderY - marginX &&
+            //     e.clientY > endBorderY + marginX
+            //   ) {
+            e.currentTarget.style.top = (e.clientY - 316) + "px";
+            //   }
+        }
+        // else {
+        //   e.currentTarget.style.cursor = "grab";
+        // }
+    };
 
 
-
-// onClick ********************************************************************************************************************
-// const [isDraggable,setIsDraggable]  = React.useState(false);
-// const selectPoint = (e) => {
-//     e.stopPropagation();
-//     setIsDraggable(!isDraggable);
-//     const myPoint = pointsList[e.currentTarget.id];
-//     if (
-//       e.clientX < startBorderX - marginX &&
-//       e.clientX > endBorderX + marginX
-//     ) {
-//       myPoint.x = e.clientX - marginX;
-//     }
-//     if (
-//       e.clientY < startBorderY - marginX &&
-//       e.clientY > endBorderY + marginX
-//     ) {
-//       myPoint.y = e.clientY - marginY;
-//     }
-//     // console.log(e.clientX)
-//     // console.log(e.clientY)
-//   };
-
-//   // onMouseMove
-//   const dragPoint = (e) => {
-//     e.stopPropagation();
-//     if (isDraggable) {
-//       e.currentTarget.style.cursor = "grabbing";
-//       if (
-//         e.clientX < startBorderX - marginX &&
-//         e.clientX > endBorderX + marginX
-//       ) {
-//         e.currentTarget.style.left = e.clientX - marginX + "px";
-//       }
-//       if (
-//         e.clientY < startBorderY - marginX &&
-//         e.clientY > endBorderY + marginX
-//       ) {
-//         e.currentTarget.style.top = e.clientY - marginY + "px";
-//       }
-//     } else {
-//       e.currentTarget.style.cursor = "grab";
-//     }
-//   }
+    // /////////////////////////////////////////////////////////////////
 
 
-// /////////////////////////////////////////////////////////////////
+    // const [dragX,setDragX] = useState(0)
+    // const [dragY,setDragY] = useState(0) 
+    // const [dragList,setDragList] = useState([]) 
+
+    // const mouseDown = (e,index) => {
+    //     setDragX((e.clientX - 322))
+    //     setDragY((465 - e.clientY))
+    //     setDragList([...dragList,{
+    //         dragX : dragX,
+    //         dragY : dragY
+    //     }])
+    //     if(dragList.length === 2) {
+    //         dragList.shift()
+    //     }
+    //    let newPoint = pointsList[index]
+    //    newPoint.x = dragX
+    //    newPoint.y = dragY
+
+    //    console.log("newPoint")
+    //    console.log(newPoint)
+    //    console.log("dragX")
+    //    console.log(dragX)
+    //    console.log("dragY")
+    //    console.log(dragY)
+    // }
+
 
     const {
         mode,
@@ -142,11 +102,11 @@ const PolesZeros = () => {
             point.mode === 'false' ?
                 zeros.push({
                     x: `${point.x}`,
-                    y: `${point.y}`                
+                    y: `${point.y}`
                 }) :
                 poles.push({
                     x: `${point.x}`,
-                    y: `${point.y}` 
+                    y: `${point.y}`
                 })
         })
         axios.post('/get_zeros_poles', {
@@ -161,21 +121,16 @@ const PolesZeros = () => {
         })
         // console.log(zeros)
         // console.log(poles)
-    }, [pointsList])
+    }, [pointsList, isDraggable])
 
 
 
     const mouseMove = (event) => {
-        setPositionX((event.clientX - 322 ) / 125);
-        setPositionY((465 - event.clientY) / 125 );
-        // setPositionX((event.clientX - 323  +90) );
-        // setPositionY((274 - event.clientY -3) );
-        // console.log("XXXX");
-        console.log(positionX);
-        // console.log("YYYYY");
-        console.log(positionY);
-        // console.log("New");
-        
+        setPositionX((event.clientX - 322) / 125);
+        setPositionY((465 - event.clientY) / 125);
+        // console.log(event.clientX)
+        // console.log(event.clientY)
+
     }
 
     const mouseLeave = () => {
@@ -221,14 +176,15 @@ const PolesZeros = () => {
                 <div className='circle'></div>
                 {pointsList.map((point, index) => {
                     return (
-                        point.mode === 'false' ? <div  onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146), left: ((point.x * 125) + 147) }} ></div>
+                        point.mode === 'false' ? <div onClick={(e) => selectPoint(e, index)} onMouseMove={(e) => dragPoint(e, index)} onContextMenu={(e) => rightClick(index, e)} key={index} className='zero' style={{ top: ((point.y * (125 * -1)) + 146), left: ((point.x * 125) + 147) }} ></div>
                             :
-                            <div onContextMenu={(e) => rightClick(index, e)} key={index} className='pole' style={{ top: ((point.y * (125 * -1)) + 139), left: ((point.x * 125) + 147) }} >X</div>
+                            <div onClick={(e) => selectPoint(e, index)} onMouseMove={(e) => dragPoint(e, index)} onContextMenu={(e) => rightClick(index, e)} key={index} className='pole' style={{ top: ((point.y * (125 * -1)) + 139), left: ((point.x * 125) + 147) }} >X</div>
                     )
-                    // onClick={selectPoint} onMouseMove={dragPoint}
+
+
                 })}
             </div>
-          <ImportExport />
+            <ImportExport />
         </>
     )
 }

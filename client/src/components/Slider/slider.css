@@ -1,14 +1,15 @@
 
 .main{
-    
+    /* height: 5vh; */
     width: 100%;
     text-align: center;
     background: #a1b1d1; 
     border-radius: 22px;
+    /* padding-bottom: 200px; */
   }
   .flex_row{
-    padding-top: 125vh;
-    height: 10gi0vh;
+    padding-top: 500px;
+    height: 600px;
     overflow-y:scroll;
 
     justify-content: center;
