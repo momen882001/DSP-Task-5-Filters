@@ -7,7 +7,8 @@
     border-radius: 22px;
   }
   .flex_row{
-    height: 80vh;
+    padding-top: 125vh;
+    height: 10gi0vh;
     overflow-y:scroll;
 
     justify-content: center;
