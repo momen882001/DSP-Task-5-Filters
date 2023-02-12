@@ -23,7 +23,6 @@ CORS(app)
 def generate_filter():
     global  zeros 
     global  poles
-
     # get request data
     data = request.get_json()
     zeros_pairs = data["zeros"]
@@ -77,11 +76,9 @@ def generate_all_pass():
     a_value =  eval(a_value)
     print(a_value)
     print(type(a_value))
-
     w  , angles = generate_all_pass_filter(a_value)
     print("Done")
     a_val = f"{a_value}"
-
     return {"frequency" : list(w),"aValue" :a_val, "all_pass_phase_response" :list(angles)} , 200
 
 
@@ -103,9 +100,7 @@ def update_filter():
     print(a_values)
     print(type(a_values))
     print("A"*50)
-
-    _, _, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
+    freq, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
     print(zeros)
     print(poles)
-
     return {"filter_phase_response" :list(angles)} , 200
