@@ -16,20 +16,20 @@ const Home = () => {
     return (
         <Container fluid>
             <Row>
-                <Col lg={3} md={20} sm={6} xs={12}>
+                <Col style={{display:"flex" , flexDirection:"column",justifyContent:"center" , alignItems:"center",height:"100vh"}} lg={4} md={6} sm={6} xs={12}>
                     <div className='col1'>
                     <p>Generate Filter</p>
                     <PolesZeros/>
                     </div>
                     
                 </Col>
-                <Col lg={4} md={6} sm={6} xs={12}>
+                <Col lg={4} md={6} sm={6} xs={12} style={{display:"flex" , flexDirection:"column",justifyContent:"center" , alignItems:"center",height:"100vh"}}>
                      <div className="col2">
                      <Plotting/>
                      </div>
                      
                 </Col>
-                <Col  lg={4} md={20} sm={10} xs={15}>
+                <Col  lg={4} md={6} sm={6} xs={12} style={{display:"flex" , flexDirection:"column",justifyContent:"center" , alignItems:"center",height:"100vh"}}>
                      <div className='col3'>
                      <p>Generate Signal</p>
                      <Signals/>
