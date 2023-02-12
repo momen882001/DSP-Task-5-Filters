@@ -75,8 +75,6 @@ def pairs_to_complex(pairs):
         x = round(eval(pairs[i]["x"]), 2)
         y = round(eval(pairs[i]["y"]), 2)
         complex_numbers.append(np.complex(x,y))
-        # print("C"*60)
-        # print(complex_numbers)
     return complex_numbers
 
 def complex_to_pairs(complex_num):

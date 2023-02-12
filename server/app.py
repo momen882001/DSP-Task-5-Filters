@@ -10,8 +10,8 @@ app = Flask(__name__)
 
 CORS(app)
 
-# zeros = [0]
-# poles = [0]
+# zeros = []
+# poles = []
 # --------------------------------------------------------APIs----------------------------------------------------------#
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -31,16 +31,6 @@ def generate_filter():
     # convert zeros and poles to complex numbers
     zeros = pairs_to_complex(zeros_pairs)
     poles = pairs_to_complex(poles_pairs)
-    # print("z"*100)
-    # print(zeros_pairs)
-    print(zeros)
-    # print(type(zeros))
-    # print("p"*100)
-    # print(poles_pairs)
-    print(poles)
-    # print("V"*60)
-    # print(zeros)
-    # print(poles)
     # generate filter from zeros and poles
     w,magnitude,angles = generate_z_filter(zeros,poles)
     return {"freq" :list(w), "magnitude" :list(magnitude), "angles": list(angles)},200
@@ -57,12 +47,6 @@ def filtering_signal():
     signal = data["signalPositionY"]
     # filter signal
     filtered_signal = filter_signal(zeros,poles,signal)
-    # print(signal)
-    # print("F"*60)
-    # print(zeros)
-    # print(poles)
-    # # print(filtered_signal)
-    # print("F"*60)
     return {"filtered_signal" :list(abs(filtered_signal))},200
 
 # ----------------------------------------------------------------------------------------------------------------------#
@@ -80,12 +64,6 @@ def generate_all_pass():
     # generate all pass filter
     w  , angles = generate_all_pass_filter(a_value)
     a_val = f"{a_value}"
-    # print(a_value)
-    # print(a_value)
-    # print("Done")
-    # print(type(a_value))
-    # # print(zeros)
-    # # print(poles)
     return {"frequency" : list(w),"aValue" :a_val, "all_pass_phase_response" :list(angles)} , 200
 
 
@@ -103,12 +81,4 @@ def update_filter():
     a_values = data["aValueList"]
     # get filter phase response from zeros and poles and a values
     freq, angles = getAllPassFrequencyResponse(zeros , poles , a_values )
-    # print(a_values)
-    # print(type(a_values))
-    # print("A"*50)
-    # print(zeros)
-    # print(poles)
-    # print("#"*50)
-    # print(zeros)
-    # print(poles)
     return {"filter_phase_response" :list(angles)} , 200
