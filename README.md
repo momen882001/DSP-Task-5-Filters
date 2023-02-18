@@ -6,8 +6,8 @@
 - [Project Features](#project-features)
 - [Project full Demo](#project-full-demo)
 - [Project Structure](#project-structure)
-- [How to Run The Project](#run-the-project)
-- [Team](#team)
+- [Run The Project](#run-the-project)
+- [Team Members](#team-members)
 
 ### Digital Filter Principles
 > Real Time Digital Filter is an application of the **Z** Transform to design filter from zeros and poles placement on the z-plane.
@@ -32,7 +32,7 @@ $$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots
 * All-pass filters are used to :
     * Correct/adjust the phase,
     * Switch the zeros/poles of the system to maintain causality/stability/min phase.
-* All Pass filter with $a$ value means pole at $a$ and zero at $1/a^*$
+* All Pass filter with $a$ value means pole at $a$ and zero at $1/a^*$ .
 $$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
 
 ### Project Features
@@ -53,3 +53,79 @@ $$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
     * Table of applied all pass filters.
     * Phase response of all pass filter a value.
     * Phase response for the corrected original filter.
+
+
+### Project full Demo
+
+### Project Structure
+
+* [Frontend]() :
+    * React Js 
+    * CSS 
+    * Ajax
+
+* [Backend]() :
+    * Python
+    * Flask
+
+* [Processing Python Notebooks]()
+
+* Used Libraries
+    * Plotly
+    * Numpy
+    * Scipy
+
+
+### Run The Project
+First you need to have Python 3, Node.js and npm installed on your computer
+
+Clone repository
+
+```shell
+git clone https://github.com/momen882001/DSP-Task-5-Filters.git
+```
+
+#### Run the backend
+
+Open the terminal and run these commands
+
+1 - Prepare Requirements
+
+```shell
+cd backend
+pip install -r requirements.txt
+```
+
+2 - Run the server
+
+```shell
+flask run
+```
+
+#### Run the frontend
+
+open new terminal and run these commands
+
+1 - Prepare Requirements
+
+```shell
+cd client
+npm install
+
+```
+
+2 - Run the server
+
+```shell
+npm start
+```
+
+
+### Team Members
+
+Biomedical Engineering Students
+
+- [Moamen Mohamed](https://github.com/momen882001)
+- [Mazen Tarek](https://github.com/Mazen-Aboulkhair)
+- [Neven Mohamed](https://github.com/NeveenMohamed)
+- [Omar Saad](https://github.com/Omar-Saad-ELGharbawy)
