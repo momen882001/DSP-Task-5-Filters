@@ -33,8 +33,23 @@ $$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots
     * Correct/adjust the phase,
     * Switch the zeros/poles of the system to maintain causality/stability/min phase.
 * All Pass filter with $a$ value means pole at $a$ and zero at $1/a^*$
-
 $$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
 
-
 ### Project Features
+
+* Add Zeros & Poles on the z plane unit circle
+* Modify the placed zeros/poles by dragging them,
+* Click on a zero or pole and delete it
+* Plot shows the filter Frequency Response :
+    * Magnitude Frequency Response plot.
+    * Phase Frequency Response plot .
+* Generate Real time signal to test the filter
+* Apply the filter on a signal as if it is a real-time filtering process.
+* Real time Graph shows the generated signal.
+* Real time Graph shows the filtered signal.
+* Correct phase dialogue window for phase correction by adding All-Pass filters.
+    * Catalogue for choosing the suitable all-pass filter.
+    * Custom all pass filter creation.
+    * Table of applied all pass filters.
+    * Phase response of all pass filter a value.
+    * Phase response for the corrected original filter.
