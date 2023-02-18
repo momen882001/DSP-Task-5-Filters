@@ -2,7 +2,7 @@
 >  Real Time Digital Filter Designer is a digital signal processing **WebApp** that helps users to design a custom **Digital Filter** via zeros-poles placement on the **Z-plane** and **All-Pass** library for phase correction.
 ## Table of contents:
 
-- [Work Process](#Digital-Filter-Principles)
+- [Digital Filter Principles](#Digital-Filter-Principles)
 - [Project Features](#project-features)
 - [Project full Demo](#project-full-demo)
 - [Project Structure](#project-structure)
@@ -34,7 +34,7 @@ $$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots
     * Switch the zeros/poles of the system to maintain causality/stability/min phase.
 * All Pass filter with *$a$* value means pole at $a$ and zero at $ 1 / a^*$
 
-$$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
+$$H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a}$$
 
 
 ### Project Features
