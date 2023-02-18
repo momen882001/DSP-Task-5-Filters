@@ -10,7 +10,8 @@
 - [Team](#team)
 
 ### Work_Process
-Real Time Digital Filter is an application of the **Z** Transform to design filter from zeros and poles placement on the z-plane.
-$$
-\frac{|Y(z)|}{|X(z)|}=|H(z)|=\frac{\left|\left(z-\xi_1\right)\right|\left|\left(z-\xi_2\right)\right|\left|\left(z-\xi_3\right)\right| \ldots\left|\left(z-\xi_N\right)\right|}{\left|\left(z-p_1\right)\right|\left|\left(z-p_2\right)\right|\left|\left(z-p_3\right)\right| \ldots\left|\left(z-p_N\right)\right|}
-$$
+* Real Time Digital Filter is an application of the **Z** Transform to design filter from zeros and poles placement on the z-plane.
+
+![Z filter](https://user-images.githubusercontent.com/84602951/219867200-61c0acca-642f-4741-a564-ed21716853ae.png)
+
+$\frac{|Y(z)|}{|X(z)|}=|H(z)|=\frac{\left|\left(z-\xi_1\right)\right|\left|\left(z-\xi_2\right)\right|\left|\left(z-\xi_3\right)\right| \ldots\left|\left(z-\xi_N\right)\right|}{\left|\left(z-p_1\right)\right|\left|\left(z-p_2\right)\right|\left|\left(z-p_3\right)\right| \ldots\left|\left(z-p_N\right)\right|}$
