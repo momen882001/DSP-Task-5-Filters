@@ -25,15 +25,15 @@ $$ \frac{|Y(z)|}{|X(z)|}=|H(z)|=\frac{\left|\left(z-\xi_1\right)\right|\left|\le
 $$ H(z)=\frac{Y(z)}{X(z)}=\frac{b_0+b_1 z^{-1}+b_2 z^{-2}+\cdots+b_N z^{-N}+\cdots}{1+a_1 z^{-1}+a_2 z^{-2}+\cdots+a_N z^{-N}+\cdots} $$
 
 #### The filter response
-$$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots \\+a_1 y(n-1)+a_2 y(n-2)+\cdots+a_N y(n-N)+\cdots\end{gathered} $$
+$$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots+a_1 y(n-1)+a_2 y(n-2)+\cdots+a_N y(n-N)+\cdots\end{gathered} $$
 
 #### All-pass filters for the phase distortion
 * The main problem with real time digital filters is the phase distortion.
 * All-pass filters are used to :
     * Correct/adjust the phase,
     * Switch the zeros/poles of the system to maintain causality/stability/min phase.
-* All Pass filter with $a$ value means pole at $a$ and zero at $1/a^*$ .
-$$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
+* All Pass filter with $a$ value means pole at $a$ and zero at $1/a^* /$ .
+$$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $
 
 ### Project Features
 
