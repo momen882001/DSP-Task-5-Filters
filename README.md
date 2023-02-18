@@ -32,7 +32,7 @@ $$ \begin{gathered} y(n)=b_0 x(n)+b_1 x(n-1)+b_2 x(n-2)+\cdots+b_N x(n-N)+\cdots
 * All-pass filters are used to :
     * Correct/adjust the phase,
     * Switch the zeros/poles of the system to maintain causality/stability/min phase.
-* All Pass filter with $a$ value means zero at $1/a^* $ and pole at a.
+* All Pass filter with a value means zero at 1/a conjugate and pole at a.
 $$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
 
 ### Project Features
