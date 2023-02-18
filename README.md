@@ -59,16 +59,16 @@ $$ H_{a p}(z)=\frac{z^{-1}-a^*}{1-a z^{-1}}=\frac{1-a^* z}{z-a} $$
 
 ### Project Structure
 
-* [Frontend]() :
+* [Frontend](https://github.com/momen882001/DSP-Task-5-Filters/tree/main/client) :
     * React Js 
     * CSS 
     * Ajax
 
-* [Backend]() :
+* [Backend](https://github.com/momen882001/DSP-Task-5-Filters/tree/main/server) :
     * Python
     * Flask
 
-* [Processing Python Notebooks]()
+* [Processing Python Notebooks](https://github.com/momen882001/DSP-Task-5-Filters/tree/main/processing)
 
 * Used Libraries
     * Plotly
